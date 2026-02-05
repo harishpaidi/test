@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Sample HTML Page</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 0; background: #f6f7fb; }
+      header { background: #111827; color: #fff; padding: 16px 24px; }
+      main { max-width: 900px; margin: 24px auto; padding: 0 16px; }
+      .card { background: #fff; border-radius: 12px; padding: 16px; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+      .row { display: flex; gap: 12px; flex-wrap: wrap; }
+      .btn { display: inline-block; padding: 10px 14px; border-radius: 10px; border: 0; cursor: pointer; }
+      .btn-primary { background: #2563eb; color: #fff; }
+      input { padding: 10px; border-radius: 10px; border: 1px solid #d1d5db; width: 260px; }
+      footer { color: #6b7280; text-align: center; padding: 18px; }
+      pre { background: #0b1020; color: #e5e7eb; padding: 12px; border-radius: 12px; overflow: auto; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1 style="margin:0; font-size:20px;">Repo Analyzer — Sample Page</h1>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2 style="margin:0 0 12px;">Quick Form</h2>
+
+        <div class="row">
+          <input id="name" placeholder="Enter your name" />
+          <button class="btn btn-primary" id="btn">Say Hi</button>
+        </div>
+
+        <p id="out" style="margin:12px 0 0; color:#111827;"></p>
+      </section>
+
+      <section class="card" style="margin-top:16px;">
+        <h2 style="margin:0 0 12px;">Sample JSON Output</h2>
+        <pre id="json">{}</pre>
+      </section>
+    </main>
+
+    <footer>© 2026 Sample HTML</footer>
+
+    <script>
+      const btn = document.getElementById("btn");
+      const nameInput = document.getElementById("name");
+      const out = document.getElementById("out");
+      const json = document.getElementById("json");
+
+      btn.addEventListener("click", () => {
+        const name = (nameInput.value || "").trim() || "there";
+        out.textContent = `Hi ${name}!`;
+
+        const payload = {
+          status: "ok",
+          message: `Hello, ${name}`,
+          timestamp: new Date().toISOString()
+        };
+        json.textContent = JSON.stringify(payload, null, 2);
+      });
+    </script>
+  </body>
+</html>
